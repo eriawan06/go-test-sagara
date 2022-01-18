@@ -6,24 +6,194 @@
 
 | Method | Path | Description |
 | --- | --- | --- |
-| GET | [/products](#getproducts) | List All Products |
-| POST | [/products](#postproducts) | Create Product |
-| GET | [/products/{productId}](#getproductsproductid) | Get Product By Id |
-| PUT | [/products/{productId}](#putproductsproductid) | Update Product By Id |
-| DELETE | [/products/{productId}](#deleteproductsproductid) | Delete Product |
+| POST | [/auth/login](#postauthlogin) | Login |
+| POST | [/auth/register](#postauthregister) | User Registration |
+| GET | [/api/users](#getapiusers) | List All Users |
+| GET | [/api/users/{userId}](#getapiusersuserid) | Get User By Id |
+| GET | [/api/products](#getapiproducts) | List All Products |
+| POST | [/api/products](#postapiproducts) | Create Product |
+| GET | [/api/products/{productId}](#getapiproductsproductid) | Get Product By Id |
+| PUT | [/api/products/{productId}](#putapiproductsproductid) | Update Product By Id |
+| DELETE | [/api/products/{productId}](#deleteapiproductsproductid) | Delete Product |
 
 ## Reference Table
 
 | Name | Path | Description |
 | --- | --- | --- |
-| model.TProduct | [#/components/schemas/model.TProduct](#componentsschemasmodeltproduct) |  |
-| model.TProductBody | [#/components/schemas/model.TProductBody](#componentsschemasmodeltproductbody) |  |
+| model.LoginBody | [#/components/schemas/model.LoginBody](#componentsschemasmodelloginbody) |  |
+| model.LoginResponse | [#/components/schemas/model.LoginResponse](#componentsschemasmodelloginresponse) |  |
+| model.Tokens | [#/components/schemas/model.Tokens](#componentsschemasmodeltokens) |  |
+| model.User | [#/components/schemas/model.User](#componentsschemasmodeluser) |  |
+| model.UserBody | [#/components/schemas/model.UserBody](#componentsschemasmodeluserbody) |  |
+| model.Product | [#/components/schemas/model.Product](#componentsschemasmodelproduct) |  |
+| model.ProductBody | [#/components/schemas/model.ProductBody](#componentsschemasmodelproductbody) |  |
 
 ## Path Details
 
 ***
 
-### [GET]/products
+### [POST]/auth/login
+
+- Summary  
+Login
+
+- Description  
+Login
+
+#### RequestBody
+
+- application/json
+
+```ts
+{
+  username?: string
+  password?: string
+}
+```
+
+#### Responses
+
+- 200 Login Success
+
+`application/json`
+
+```ts
+{
+  code?: number
+  status?: string
+  data: {
+    tokens: {
+      access_token?: string
+      refresh_token?: string
+    }
+    user: {
+      id?: number
+      fullname?: string
+      username?: string
+      created_at?: string
+      updated_at?: string
+    }
+  }
+}
+```
+
+***
+
+### [POST]/auth/register
+
+- Summary  
+User Registration
+
+- Description  
+User Registration
+
+#### RequestBody
+
+- application/json
+
+```ts
+{
+  fullname?: string
+  username?: string
+  password?: string
+}
+```
+
+#### Responses
+
+- 200 Registration Success
+
+`application/json`
+
+```ts
+{
+  code?: number
+  status?: string
+  data: {
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
+  }
+}
+```
+
+***
+
+### [GET]/api/users
+
+- Summary  
+List All Users
+
+- Description  
+List All Users
+
+#### Headers
+
+```ts
+Authorization: string
+```
+
+#### Responses
+
+- 200 Success get all users
+
+`application/json`
+
+```ts
+{
+  code?: number
+  status?: string
+  data: {
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
+  }[]
+}
+```
+
+***
+
+### [GET]/api/users/{userId}
+
+- Summary  
+Get User By Id
+
+- Description  
+Get User By Id
+
+#### Headers
+
+```ts
+Authorization: string
+```
+
+#### Responses
+
+- 200 Success get user by id
+
+`application/json`
+
+```ts
+{
+  code?: number
+  status?: string
+  data: {
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
+  }
+}
+```
+
+***
+
+### [GET]/api/products
 
 - Summary  
 List All Products
@@ -61,7 +231,7 @@ Authorization: string
 
 ***
 
-### [POST]/products
+### [POST]/api/products
 
 - Summary  
 Create Product
@@ -112,7 +282,7 @@ Authorization: string
 
 ***
 
-### [GET]/products/{productId}
+### [GET]/api/products/{productId}
 
 - Summary  
 Get Product By Id
@@ -150,7 +320,7 @@ Authorization: string
 
 ***
 
-### [PUT]/products/{productId}
+### [PUT]/api/products/{productId}
 
 - Summary  
 Update Product By Id
@@ -201,7 +371,7 @@ Authorization: string
 
 ***
 
-### [DELETE]/products/{productId}
+### [DELETE]/api/products/{productId}
 
 - Summary  
 Delete Product
@@ -230,7 +400,65 @@ Authorization: string
 
 ## References
 
-### #/components/schemas/model.TProduct
+### #/components/schemas/model.LoginBody
+
+```ts
+{
+  username?: string
+  password?: string
+}
+```
+
+### #/components/schemas/model.LoginResponse
+
+```ts
+{
+  tokens: {
+    access_token?: string
+    refresh_token?: string
+  }
+  user: {
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
+  }
+}
+```
+
+### #/components/schemas/model.Tokens
+
+```ts
+{
+  access_token?: string
+  refresh_token?: string
+}
+```
+
+### #/components/schemas/model.User
+
+```ts
+{
+  id?: number
+  fullname?: string
+  username?: string
+  created_at?: string
+  updated_at?: string
+}
+```
+
+### #/components/schemas/model.UserBody
+
+```ts
+{
+  fullname?: string
+  username?: string
+  password?: string
+}
+```
+
+### #/components/schemas/model.Product
 
 ```ts
 {
@@ -244,7 +472,7 @@ Authorization: string
 }
 ```
 
-### #/components/schemas/model.TProductBody
+### #/components/schemas/model.ProductBody
 
 ```ts
 {
