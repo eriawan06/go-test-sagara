@@ -418,6 +418,104 @@
             }
           }
         }
+      },
+      "/api/products/image/upload": {
+        "post": {
+          "tags": ["Product API"],
+          "description": "Upload Product Image",
+          "summary": "Upload Product Image",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "filename": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success upload product image",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/products/image/{filename}": {
+        "get": {
+          "tags": ["Product API"],
+          "description": "Get Product Image",
+          "summary": "Get Product Image",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success get product image",
+              "content": {
+                "image/jpeg": {
+                  "schema": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Image File"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
