@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/eriawan06/go-test-sagara/src/modules/auth/model/domain"
+	"github.com/eriawan06/go-test-sagara/src/shared"
 	"github.com/labstack/echo/v4"
 )
 
@@ -14,7 +14,7 @@ var JWT_REFRESH_TOKEN_LIFETIME = 24
 var JWT_ACCESS_TOKEN_LIFETIME = 300
 
 // GenerateJWT ...
-func GenerateJWT(u string) (domain.Jwt, jwt.MapClaims, error) {
+func GenerateJWT(u string) (shared.JwtModel, jwt.MapClaims, error) {
 
 	// Set refresh Token
 	refreshToken := jwt.New(jwt.SigningMethodHS512)
@@ -23,7 +23,7 @@ func GenerateJWT(u string) (domain.Jwt, jwt.MapClaims, error) {
 	rtClaims["exp"] = time.Now().Add(time.Hour * time.Duration(JWT_REFRESH_TOKEN_LIFETIME)).Unix()
 	rt, err := refreshToken.SignedString([]byte(JWT_SECRET))
 	if err != nil {
-		return domain.Jwt{}, nil, err
+		return shared.JwtModel{}, nil, err
 	}
 
 	// Set claims
@@ -38,13 +38,13 @@ func GenerateJWT(u string) (domain.Jwt, jwt.MapClaims, error) {
 	// Generate encoded token and send it as response.
 	t, err := token.SignedString([]byte(JWT_SECRET))
 	if err != nil {
-		return domain.Jwt{}, nil, err
+		return shared.JwtModel{}, nil, err
 	}
 	// tokens := map[string]string{
 	// 	"access_token":  t,
 	// 	"refresh_token": rt,
 	// }
-	tokens := domain.Jwt{
+	tokens := shared.JwtModel{
 		AccessToken:  t,
 		RefreshToken: rt,
 	}

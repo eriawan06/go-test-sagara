@@ -1,11 +1,11 @@
 package dto
 
 import (
-	"github.com/eriawan06/go-test-sagara/src/modules/auth/model/domain"
 	user "github.com/eriawan06/go-test-sagara/src/modules/user/model/dto"
+	"github.com/eriawan06/go-test-sagara/src/shared"
 )
 
 type AuthLoginResponseDto struct {
-	Tokens domain.Jwt           `json:"token"`
+	Tokens shared.JwtModel      `json:"token"`
 	User   user.UserResponseDto `json:"user"`
 }

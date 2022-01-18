@@ -1,6 +1,6 @@
-package domain
+package shared
 
-type Jwt struct {
+type JwtModel struct {
 	AccessToken  string `json:"access_token"`
 	RefreshToken string `json:"refresh_token"`
 }

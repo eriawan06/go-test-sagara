@@ -6,6 +6,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/jmoiron/sqlx v1.3.4 // indirect
 	github.com/josharian/impl v1.1.0 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect

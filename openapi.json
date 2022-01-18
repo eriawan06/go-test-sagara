@@ -516,6 +516,48 @@
             }
           }
         }
+      },
+      "/api/refresh-token": {
+        "post": {
+          "tags": ["Authentication"],
+          "description": "Refresh Token",
+          "summary": "Refresh Token",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success refresh token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.Tokens"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
