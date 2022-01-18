@@ -15,6 +15,8 @@
 | GET | [/api/products/{productId}](#getapiproductsproductid) | Get Product By Id |
 | PUT | [/api/products/{productId}](#putapiproductsproductid) | Update Product By Id |
 | DELETE | [/api/products/{productId}](#deleteapiproductsproductid) | Delete Product |
+| POST | [/api/products/image/upload](#postapiproductsimageupload) | Upload Product Image |
+| GET | [/api/products/image/{filename}](#getapiproductsimagefilename) | Get Product Image |
 
 ## Reference Table
 
@@ -46,8 +48,8 @@ Login
 
 ```ts
 {
-  username: string
-  password: string
+  username?: string
+  password?: string
 }
 ```
 
@@ -59,19 +61,19 @@ Login
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
     tokens: {
-      access_token: string
-      refresh_token: string
+      access_token?: string
+      refresh_token?: string
     }
     user: {
-      id: number
-      fullname: string
-      username: string
-      created_at: string
-      updated_at: string
+      id?: number
+      fullname?: string
+      username?: string
+      created_at?: string
+      updated_at?: string
     }
   }
 }
@@ -93,9 +95,9 @@ User Registration
 
 ```ts
 {
-  fullname: string
-  username: string
-  password: string
+  fullname?: string
+  username?: string
+  password?: string
 }
 ```
 
@@ -107,14 +109,14 @@ User Registration
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
-    id: number
-    fullname: string
-    username: string
-    created_at: string
-    updated_at: string
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -143,17 +145,15 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
-  data: [
-    {
-        id: number
-        fullname: string
-        username: string
-        created_at: string
-        updated_at: string
-    }
-  ]
+  code?: number
+  status?: string
+  data: {
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
+  }[]
 }
 ```
 
@@ -181,14 +181,14 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
-    id: number
-    fullname: string
-    username: string
-    created_at: string
-    updated_at: string
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -217,19 +217,17 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
-  data: [
-    {
-        id: number
-        name: string
-        description: string
-        price: number
-        image: string
-        created_at: string
-        updated_at: string
-    }
-  ]
+  code?: number
+  status?: string
+  data: {
+    id?: number
+    name?: string
+    description?: string
+    price?: number
+    image?: string
+    created_at?: string
+    updated_at?: string
+  }[]
 }
 ```
 
@@ -255,10 +253,10 @@ Authorization: string
 
 ```ts
 {
-  name: string
-  description: string
-  price: number
-  image: string
+  name?: string
+  description?: string
+  price?: number
+  image?: string
 }
 ```
 
@@ -270,16 +268,16 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
-    id: number
-    name: string
-    description: string
-    price: number
-    image: string
-    created_at: string
-    updated_at: string
+    id?: number
+    name?: string
+    description?: string
+    price?: number
+    image?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -308,16 +306,16 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
-    id: number
-    name: string
-    description: string
-    price: number
-    image: string
-    created_at: string
-    updated_at: string
+    id?: number
+    name?: string
+    description?: string
+    price?: number
+    image?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -344,10 +342,10 @@ Authorization: string
 
 ```ts
 {
-  name: string
-  description: string
-  price: number
-  image: string
+  name?: string
+  description?: string
+  price?: number
+  image?: string
 }
 ```
 
@@ -359,16 +357,16 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
   data: {
-    id: number
-    name: string
-    description: string
-    price: number
-    image: string
-    created_at: string
-    updated_at: string
+    id?: number
+    name?: string
+    description?: string
+    price?: number
+    image?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -397,8 +395,81 @@ Authorization: string
 
 ```ts
 {
-  code: number
-  status: string
+  code?: number
+  status?: string
+}
+```
+
+***
+
+### [POST]/api/products/image/upload
+
+- Summary  
+Upload Product Image
+
+- Description  
+Upload Product Image
+
+#### Headers
+
+```ts
+Authorization: string
+```
+
+#### RequestBody
+
+- multipart/form-data
+
+```ts
+{
+  file?: string
+  filename?: string
+}
+```
+
+#### Responses
+
+- 200 Success upload product image
+
+`application/json`
+
+```ts
+{
+  code?: number
+  status?: string
+  data: {
+    url?: string
+  }
+}
+```
+
+***
+
+### [GET]/api/products/image/{filename}
+
+- Summary  
+Get Product Image
+
+- Description  
+Get Product Image
+
+#### Headers
+
+```ts
+Authorization: string
+```
+
+#### Responses
+
+- 200 Success get product image
+
+`image/jpeg`
+
+```ts
+{
+  "type": "string",
+  "format": "binary",
+  "description": "Image File"
 }
 ```
 
@@ -408,8 +479,8 @@ Authorization: string
 
 ```ts
 {
-  username: string
-  password: string
+  username?: string
+  password?: string
 }
 ```
 
@@ -418,15 +489,15 @@ Authorization: string
 ```ts
 {
   tokens: {
-    access_token: string
-    refresh_token: string
+    access_token?: string
+    refresh_token?: string
   }
   user: {
-    id: number
-    fullname: string
-    username: string
-    created_at: string
-    updated_at: string
+    id?: number
+    fullname?: string
+    username?: string
+    created_at?: string
+    updated_at?: string
   }
 }
 ```
@@ -435,8 +506,8 @@ Authorization: string
 
 ```ts
 {
-  access_token: string
-  refresh_token: string
+  access_token?: string
+  refresh_token?: string
 }
 ```
 
@@ -444,11 +515,11 @@ Authorization: string
 
 ```ts
 {
-  id: number
-  fullname: string
-  username: string
-  created_at: string
-  updated_at: string
+  id?: number
+  fullname?: string
+  username?: string
+  created_at?: string
+  updated_at?: string
 }
 ```
 
@@ -456,9 +527,9 @@ Authorization: string
 
 ```ts
 {
-  fullname: string
-  username: string
-  password: string
+  fullname?: string
+  username?: string
+  password?: string
 }
 ```
 
@@ -466,13 +537,13 @@ Authorization: string
 
 ```ts
 {
-  id: number
-  name: string
-  description: string
-  price: number
-  image: string
-  created_at: string
-  updated_at: string
+  id?: number
+  name?: string
+  description?: string
+  price?: number
+  image?: string
+  created_at?: string
+  updated_at?: string
 }
 ```
 
@@ -480,9 +551,9 @@ Authorization: string
 
 ```ts
 {
-  name: string
-  description: string
-  price: number
-  image: string
+  name?: string
+  description?: string
+  price?: number
+  image?: string
 }
 ```
