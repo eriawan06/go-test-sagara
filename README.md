@@ -48,8 +48,8 @@ Login
 
 ```ts
 {
-  username?: string
-  password?: string
+  username: string
+  password: string
 }
 ```
 
@@ -61,19 +61,19 @@ Login
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
     tokens: {
-      access_token?: string
-      refresh_token?: string
+      access_token: string
+      refresh_token: string
     }
     user: {
-      id?: number
-      fullname?: string
-      username?: string
-      created_at?: string
-      updated_at?: string
+      id: number
+      fullname: string
+      username: string
+      created_at: string
+      updated_at: string
     }
   }
 }
@@ -95,9 +95,9 @@ User Registration
 
 ```ts
 {
-  fullname?: string
-  username?: string
-  password?: string
+  fullname: string
+  username: string
+  password: string
 }
 ```
 
@@ -109,14 +109,14 @@ User Registration
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    id?: number
-    fullname?: string
-    username?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    fullname: string
+    username: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -145,15 +145,17 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
-  data: {
-    id?: number
-    fullname?: string
-    username?: string
-    created_at?: string
-    updated_at?: string
-  }[]
+  code: number
+  status: string
+  data: [
+    {
+        id: number
+        fullname: string
+        username: string
+        created_at: string
+        updated_at: string
+    }
+  ]
 }
 ```
 
@@ -181,14 +183,14 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    id?: number
-    fullname?: string
-    username?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    fullname: string
+    username: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -217,17 +219,19 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
-  data: {
-    id?: number
-    name?: string
-    description?: string
-    price?: number
-    image?: string
-    created_at?: string
-    updated_at?: string
-  }[]
+  code: number
+  status: string
+  data: [
+    {
+        id: number
+        name: string
+        description: string
+        price: number
+        image: string
+        created_at: string
+        updated_at: string
+    }
+  ]
 }
 ```
 
@@ -253,10 +257,10 @@ Authorization: string
 
 ```ts
 {
-  name?: string
-  description?: string
-  price?: number
-  image?: string
+  name: string
+  description: string
+  price: number
+  image: string
 }
 ```
 
@@ -268,16 +272,16 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    id?: number
-    name?: string
-    description?: string
-    price?: number
-    image?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    name: string
+    description: string
+    price: number
+    image: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -306,16 +310,16 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    id?: number
-    name?: string
-    description?: string
-    price?: number
-    image?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    name: string
+    description: string
+    price: number
+    image: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -342,10 +346,10 @@ Authorization: string
 
 ```ts
 {
-  name?: string
-  description?: string
-  price?: number
-  image?: string
+  name: string
+  description: string
+  price: number
+  image: string
 }
 ```
 
@@ -357,16 +361,16 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    id?: number
-    name?: string
-    description?: string
-    price?: number
-    image?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    name: string
+    description: string
+    price: number
+    image: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -395,8 +399,8 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
 }
 ```
 
@@ -422,8 +426,8 @@ Authorization: string
 
 ```ts
 {
-  file?: string
-  filename?: string
+  file: string
+  filename: string
 }
 ```
 
@@ -435,10 +439,10 @@ Authorization: string
 
 ```ts
 {
-  code?: number
-  status?: string
+  code: number
+  status: string
   data: {
-    url?: string
+    url: string
   }
 }
 ```
@@ -479,8 +483,8 @@ Authorization: string
 
 ```ts
 {
-  username?: string
-  password?: string
+  username: string
+  password: string
 }
 ```
 
@@ -489,15 +493,15 @@ Authorization: string
 ```ts
 {
   tokens: {
-    access_token?: string
-    refresh_token?: string
+    access_token: string
+    refresh_token: string
   }
   user: {
-    id?: number
-    fullname?: string
-    username?: string
-    created_at?: string
-    updated_at?: string
+    id: number
+    fullname: string
+    username: string
+    created_at: string
+    updated_at: string
   }
 }
 ```
@@ -506,8 +510,8 @@ Authorization: string
 
 ```ts
 {
-  access_token?: string
-  refresh_token?: string
+  access_token: string
+  refresh_token: string
 }
 ```
 
@@ -515,11 +519,11 @@ Authorization: string
 
 ```ts
 {
-  id?: number
-  fullname?: string
-  username?: string
-  created_at?: string
-  updated_at?: string
+  id: number
+  fullname: string
+  username: string
+  created_at: string
+  updated_at: string
 }
 ```
 
@@ -527,9 +531,9 @@ Authorization: string
 
 ```ts
 {
-  fullname?: string
-  username?: string
-  password?: string
+  fullname: string
+  username: string
+  password: string
 }
 ```
 
@@ -537,13 +541,13 @@ Authorization: string
 
 ```ts
 {
-  id?: number
-  name?: string
-  description?: string
-  price?: number
-  image?: string
-  created_at?: string
-  updated_at?: string
+  id: number
+  name: string
+  description: string
+  price: number
+  image: string
+  created_at: string
+  updated_at: string
 }
 ```
 
@@ -551,9 +555,9 @@ Authorization: string
 
 ```ts
 {
-  name?: string
-  description?: string
-  price?: number
-  image?: string
+  name: string
+  description: string
+  price: number
+  image: string
 }
 ```
