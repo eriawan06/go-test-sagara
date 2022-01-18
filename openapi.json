@@ -1,0 +1,537 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"Test Case Sagara",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"http://localhost:3000"}
+    ],
+    "paths": {
+      "/auth/login": {
+        "post": {
+          "tags": ["Authentication"],
+          "description": "Login",
+          "summary": "Login",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model.LoginBody"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Login Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.LoginResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/register": {
+        "post": {
+          "tags": ["Authentication"],
+          "description": "User Registration",
+          "summary": "User Registration",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model.UserBody"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Registration Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/users": {
+        "get": {
+          "tags": ["User API"],
+          "description": "List All Users",
+          "summary": "List All Users",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success get all users",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/model.User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/users/{userId}": {
+        "get": {
+          "tags": ["User API"],
+          "description": "Get User By Id",
+          "summary": "Get User By Id",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            },
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "description": "User Id"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success get user by id",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/products": {
+        "get": {
+          "tags": ["Product API"],
+          "description": "List All Products",
+          "summary": "List All Products",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success get all products",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/model.Product"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": ["Product API"],
+          "description": "Create Product",
+          "summary": "Create Product",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model.ProductBody"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success create product",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.Product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/products/{productId}": {
+        "get": {
+          "tags": ["Product API"],
+          "description": "Get Product By Id",
+          "summary": "Get Product By Id",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            },
+            {
+              "name": "productId",
+              "in": "path",
+              "required": true,
+              "description": "Product Id"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success get product by id",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.Product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": ["Product API"],
+          "description": "Update Product By Id",
+          "summary": "Update Product By Id",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            },
+            {
+              "name": "productId",
+              "in": "path",
+              "required": true,
+              "description": "Product Id"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model.ProductBody"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success update product by id",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "$ref": "#/components/schemas/model.Product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Product API"],
+          "description": "Delete Product",
+          "summary": "Delete Product",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "default": "Bearer \u003cAdd access token here\u003e"
+              },
+              "description": "Insert your access token"
+            },
+            {
+              "name": "productId",
+              "in": "path",
+              "required": true,
+              "description": "Product Id"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success delete product",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "model.LoginBody": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "model.LoginResponse": {
+          "type": "object",
+          "properties": {
+            "tokens": {
+              "$ref": "#/components/schemas/model.Tokens"
+            },
+            "user": {
+              "$ref": "#/components/schemas/model.User"
+            }
+          }
+        },
+        "model.Tokens": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string"
+            },
+            "refresh_token": {
+              "type": "string"
+            }
+          }
+        },
+        "model.User": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "fullname": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "model.UserBody": {
+          "type": "object",
+          "properties": {
+            "fullname": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "model.Product": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            },
+            "image": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "model.ProductBody": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            },
+            "image": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

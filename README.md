@@ -85,8 +85,6 @@ Authorization: string
   description?: string
   price?: number
   image?: string
-  created_at?: string
-  updated_at?: string
 }
 ```
 
@@ -176,8 +174,6 @@ Authorization: string
   description?: string
   price?: number
   image?: string
-  created_at?: string
-  updated_at?: string
 }
 ```
 
@@ -256,7 +252,5 @@ Authorization: string
   description?: string
   price?: number
   image?: string
-  created_at?: string
-  updated_at?: string
 }
 ```
